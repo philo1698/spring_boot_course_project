@@ -22,6 +22,21 @@ public class Course {
 
     private LocalDateTime createdAt;
 
+    /*
+    1) (@OneToMany) means :
+         Defines the relationship to (One Course → Many Lessons)
+
+    2)(mappedBy = "course") means:
+        Don’t create a new relationship — use the one already defined in Lesson
+
+    3)(cascade = CascadeType.ALL) means :
+        This controls what happens to Lessons when you change Course.
+        It means , If you:
+        save course → lessons saved automatically
+        delete course → lessons deleted
+        update course → lessons updated
+    */
+
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Lesson> lessons;
 

@@ -21,8 +21,9 @@ public class Lesson {
 
     private LocalDateTime createdAt;
 
+
     @ManyToOne
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_id") // "course_id" is foreign key in lessons table
     private Course course;
 
     // Constructors
