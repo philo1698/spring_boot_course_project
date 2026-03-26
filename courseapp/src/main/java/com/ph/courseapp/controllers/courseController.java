@@ -48,8 +48,8 @@ public class courseController {
     }
 
     // DELETE
-    @DeleteMapping("/{id}")
-    public String deleteCourse(@PathVariable Long id) {
+    @DeleteMapping("/delete")
+    public String deleteCourse(@RequestBody Long id) {
         return courseService.deleteCourse(id);
     }
 
