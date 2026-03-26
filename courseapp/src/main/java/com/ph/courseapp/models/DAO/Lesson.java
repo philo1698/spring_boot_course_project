@@ -1,5 +1,6 @@
 package com.ph.courseapp.models.DAO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class Lesson {
 
     @ManyToOne
     @JoinColumn(name = "course_id") // "course_id" is foreign key in lessons table
+    @JsonBackReference
     private Course course;
 
     // Constructors

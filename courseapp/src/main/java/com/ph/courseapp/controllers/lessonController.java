@@ -19,8 +19,6 @@ public class lessonController {
                             @RequestBody Lesson lesson) {
 
         return lessonService.addLesson(courseId, lesson);
-
-
     }
 
     // GET LESSONS BY COURSE

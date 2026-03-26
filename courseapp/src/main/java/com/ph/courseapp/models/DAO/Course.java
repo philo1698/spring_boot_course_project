@@ -1,5 +1,7 @@
 package com.ph.courseapp.models.DAO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -38,6 +40,7 @@ public class Course {
     */
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Lesson> lessons;
 
     // Constructors
