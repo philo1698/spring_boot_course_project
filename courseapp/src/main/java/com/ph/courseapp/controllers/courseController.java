@@ -27,7 +27,7 @@ public class courseController {
     }
 
     // GET BY ID
-    @GetMapping("/getById")
+    @GetMapping("/get")
     public Course getCourseById(@RequestBody Long id) {
         return courseService.getCourseById(id);
     }
