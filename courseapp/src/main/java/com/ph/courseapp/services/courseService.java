@@ -43,7 +43,8 @@ public class courseService {
     }
 
     // Delete Course
-    public void deleteCourse(Long id) {
+    public String deleteCourse(Long id) {
         courseRepository.deleteById(id);
+        return "course deleted successfully";
     }
 }
