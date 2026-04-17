@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: course-db
+    environment:
+      MYSQL_DATABASE: course_app
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: 1698
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"   # <- use 3307 on host instead of 3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql  #Stores Database in project files
+
+  courseapp:
+    image: courseapp:latest
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/course_app
+      SPRING_DATASOURCE_USERNAME: springuser
+      SPRING_DATASOURCE_PASSWORD: 1698
+      # === IMPORTANT FIXES BELOW ===
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update     # or 'create' for development
+      SPRING_JPA_SHOW_SQL: true
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: true
+
+volumes:
+  mysql-data:
